@@ -19,6 +19,7 @@ class ImagesController < ActionController::Base
   end
 
   private
+
   def image_params
     params.require(:image).permit(:url)
   end

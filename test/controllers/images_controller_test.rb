@@ -9,7 +9,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_show_success
-    url = "https://i.natgeofe.com/k/66d3a80c-f4c3-4410-845c-3543375eaa85/cheetah-watching.jpg"
+    url = 'https://i.natgeofe.com/k/66d3a80c-f4c3-4410-845c-3543375eaa85/cheetah-watching.jpg'
     image = Image.new(url: url)
     assert image.save
 
@@ -20,8 +20,8 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_create_valid
-    url = "https://i.natgeofe.com/k/66d3a80c-f4c3-4410-845c-3543375eaa85/cheetah-watching.jpg"
-    assert_difference("Image.count", 1) do
+    url = 'https://i.natgeofe.com/k/66d3a80c-f4c3-4410-845c-3543375eaa85/cheetah-watching.jpg'
+    assert_difference('Image.count', 1) do
       post images_url, params: { image: { url: url } }
     end
 
@@ -30,8 +30,8 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_create_invalid
-    assert_no_difference"Image.count" do
-      post images_url, params: { image: { url: "" } }
+    assert_no_difference 'Image.count' do
+      post images_url, params: { image: { url: '' } }
     end
 
     assert_response :unprocessable_entity
