@@ -1,0 +1,5 @@
+<%= link_to "New image", new_image_path %>
+<br>
+<% @images.each do |image| %>
+    <%= image_tag(image.url, width: 400) %>
+<% end %>

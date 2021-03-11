@@ -18,6 +18,11 @@ class ImagesController < ActionController::Base
     end
   end
 
+  def index
+    @images = Image.order(id: :desc)
+    # binding.remote_pry
+  end
+
   private
 
   def image_params
