@@ -1,6 +1,10 @@
 <%= link_to "New image", new_image_path %>
 <br>
 <% @images.each do |image| %>
-    <%= image_tag(image.url, width: 400) %>
-    <%= content_tag(:p, image.tag_list) %>
+  <p>
+    <div><%= image_tag(image.url, width: 400) %></div>
+    <% image.tags.each do |tag| %>
+      <%= link_to tag.name, images_path(tag: tag.name), class: 'js-image-tag' %>
+    <% end %>
+  </p>
 <% end %>

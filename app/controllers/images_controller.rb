@@ -1,5 +1,6 @@
 class ImagesController < ActionController::Base
   protect_from_forgery with: :exception
+
   def new
     @image = Image.new
   end
@@ -19,7 +20,11 @@ class ImagesController < ActionController::Base
   end
 
   def index
-    @images = Image.order(id: :desc)
+    @images = if params.key? :tag
+                Image.tagged_with(params[:tag])
+              else
+                Image.order(id: :desc)
+              end
   end
 
   private
