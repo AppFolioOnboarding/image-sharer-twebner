@@ -2,4 +2,5 @@
 <br>
 <% @images.each do |image| %>
     <%= image_tag(image.url, width: 400) %>
+    <%= content_tag(:p, image.tag_list) %>
 <% end %>
