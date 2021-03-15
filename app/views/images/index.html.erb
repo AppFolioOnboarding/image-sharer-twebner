@@ -1,10 +1,18 @@
+<%= javascript_include_tag 'application' %>
 <%= link_to "New image", new_image_path %>
 <br>
 <% @images.each do |image| %>
   <p>
-    <div><%= image_tag(image.url, width: 400) %></div>
+  <div><%= image_tag(image.url, width: 400) %></div>
+  <div>
     <% image.tags.each do |tag| %>
       <%= link_to tag.name, images_path(tag: tag.name), class: 'js-image-tag' %>
     <% end %>
+  </div>
+  <div><%= button_to 'Delete', image_path(image),
+                     method: 'delete',
+                     data: { confirm: 'Are you sure?' },
+                     form_class: 'js-button-form' %>
+  </div>
   </p>
 <% end %>
