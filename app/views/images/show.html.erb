@@ -1,2 +1,4 @@
-<%= image_tag(@image.url, width: 400) %>
-<%= content_tag(:p, @image.tag_list) %>
+<div><%= image_tag(@image.url, width: 400) %></div>
+<% @image.tags.each do |tag| %>
+  <%= link_to tag.name, images_path(tag: tag.name) %>
+<% end %>
