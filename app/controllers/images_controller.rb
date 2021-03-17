@@ -27,6 +27,15 @@ class ImagesController < ActionController::Base
               end
   end
 
+  def destroy
+    @image = Image.find(params[:id])
+    @image.destroy
+
+    redirect_to images_path
+  rescue ActiveRecord::RecordNotFound
+    render json: {}, status: :unprocessable_entity
+  end
+
   private
 
   def image_params
