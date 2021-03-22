@@ -6,7 +6,7 @@ module Api
       if feedback.save
         head :no_content
       else
-        render status: :unprocessable_entity, json: { error: 'Invalid feedback'}
+        render status: :unprocessable_entity, json: { error: 'Invalid feedback' }
       end
     end
 

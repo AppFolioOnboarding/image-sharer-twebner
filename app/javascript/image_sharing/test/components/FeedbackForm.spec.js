@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import sinon from 'sinon';
 import FeedbackForm from '../../components/FeedbackForm';
-import * as helper from "../../utils/helper";
+import * as helper from '../../utils/helper';
 
 describe('<FeedbackForm />', () => {
   afterEach(() => {
@@ -40,13 +40,13 @@ describe('<FeedbackForm />', () => {
     const name = 'Tyler';
     const comment = 'This is awesome';
 
-    wrapper.setState({ name: name, comment: comment });
+    wrapper.setState({ name, comment });
 
     const postStub = sinon.stub(helper, 'post').resolves();
     await wrapper.instance().handleFormSubmitted({
       preventDefault: () => {
-      }});
-    assert(postStub.calledOnceWith('/api/feedbacks', { name: name, comment: comment }));
+      } });
+    assert(postStub.calledOnceWith('/api/feedbacks', { name, comment }));
 
     assert.strictEqual(wrapper.state().alertMessage, 'Successfully submitted feedback!');
     assert(wrapper.state().status);
@@ -71,13 +71,13 @@ describe('<FeedbackForm />', () => {
     const name = '';
     const comment = 'This is awesome';
 
-    wrapper.setState({ name: name, comment: comment });
+    wrapper.setState({ name, comment });
 
     const postStub = sinon.stub(helper, 'post').rejects();
     await wrapper.instance().handleFormSubmitted({
       preventDefault: () => {
-      }});
-    assert(postStub.calledOnceWith('/api/feedbacks', { name: name, comment: comment }));
+      } });
+    assert(postStub.calledOnceWith('/api/feedbacks', { name, comment }));
 
     assert(!wrapper.state().status);
     assert.strictEqual(wrapper.state().name, name);

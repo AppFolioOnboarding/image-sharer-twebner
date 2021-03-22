@@ -1,6 +1,6 @@
 import React from 'react';
-import {Alert, Button, Form, FormGroup, Label, Input} from 'reactstrap';
-import {post} from '../utils/helper';
+import { Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { post } from '../utils/helper';
 
 export default class FeedbackForm extends React.Component {
   constructor() {
@@ -16,16 +16,16 @@ export default class FeedbackForm extends React.Component {
   }
 
   handleNameChange = (event) => {
-    this.setState({name: event.target.value});
+    this.setState({ name: event.target.value });
   }
 
   handleCommentChange(event) {
-    this.setState({comment: event.target.value});
+    this.setState({ comment: event.target.value });
   }
 
   handleFormSubmitted(event) {
     event.preventDefault();
-    return post('/api/feedbacks', {name: this.state.name, comment: this.state.comment})
+    return post('/api/feedbacks', { name: this.state.name, comment: this.state.comment })
       .then(() => {
         this.setState({
           alertMessage: 'Successfully submitted feedback!',
@@ -43,7 +43,7 @@ export default class FeedbackForm extends React.Component {
   }
 
   render() {
-    const {name, comment, alertMessage, status} = this.state;
+    const { name, comment, alertMessage, status } = this.state;
     return (
       <Form className="container" onSubmit={this.handleFormSubmitted}>
         {alertMessage && <Alert color={status ? 'success' : 'warning'}>{alertMessage}</Alert>}
@@ -66,7 +66,7 @@ export default class FeedbackForm extends React.Component {
             id="commentText"
             value={comment}
             onChange={(event) => {
-              this.setState({comment: event.target.value});
+              this.setState({ comment: event.target.value });
             }}
           />
         </FormGroup>

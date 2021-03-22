@@ -4,7 +4,7 @@ module Api
   class FeedbacksControllerTest < ActionDispatch::IntegrationTest
     def test_create_valid
       assert_difference 'Feedback.count', 1 do
-        post api_feedbacks_path, params: { feedback: { name: 'Tyler', comment: 'This is awesome'}}
+        post api_feedbacks_path, params: { feedback: { name: 'Tyler', comment: 'This is awesome' } }
       end
 
       assert_response :no_content
@@ -14,7 +14,7 @@ module Api
 
     def test_create_invalid
       assert_no_difference 'Feedback.count' do
-        post api_feedbacks_path, params: { feedback: { name: '' }}
+        post api_feedbacks_path, params: { feedback: { name: '' } }
       end
 
       assert_response :unprocessable_entity
